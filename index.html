@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-compatible" content="ie=edge">
+    <link rel="manifest" href="manifest.json" />
+    <title>EadQuiz - Ensinando programação de forma divertida</title>
+    <meta name="description" content="Não há melhorar hora para aprender programação do que agora, com esse jogo a Eadfast trás 
+    a si a proposta de ensinar programaçáo de forma devertida." />
+
+    <meta property="og:author" content="Eadfast" />
+    <meta property="og:site_name" content="Eadfast" />
+    <meta property="og:site_url" content="games.eadfast.com/ead-quiz" />
+    <meta property="og:image" content="app/assets/img/logo.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="EadQuiz">
+    <link rel="icon" href="app/assets/img/favicon-32x32.png" />
+    <link rel="stylesheet" href="app/css/main.css" />
+    
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-57x57.png" sizes="57x57" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-60x60.png" sizes="60x60" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-72x72.png" sizes="72x72" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-76x76.png" sizes="76x76" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-114x114.png" sizes="114x114" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-120x120.png" sizes="120x120" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-144x144.png" sizes="144x144" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-152x152.png" sizes="152x152" />
+    <link rel="apple-touch-icon" href="app/assets/img/icons/apple-icon-180x180.png" sizes="180x180" />
+    <meta name="msapplication-TileImage" content="app/assets/img/icons/ms-icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#fff">
+    <meta name="theme-color" content="#bc1550" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="main-header"></header>
+
+      <!-- SPLASH SCREEN -->
+      <section class="splash-screen">
+        <div class="progress__container center">
+          <progress value="0" max="100" >10%</progress>
+          <span class="block">Carregando...</span>
+        </div>
+      </section>
+
+      <!-- MENU SCREEN -->
+      <section class="menu hide center">
+        <button type="button" id="btn-start" class="__btn-menu bolder uppercase">Jogar</button>
+        <button type="button" id="btn-setting" class="__btn-menu bolder uppercase">Opções</button>
+        <button type="button" id="btn-extras" class="__btn-menu bolder uppercase">Extras</button>
+      </section>
+
+      <!-- SCREEN CHOOSE LANGUAGE -->
+      <section class="languages hide center">
+        <button type="button" id="btn-html" class="__btn-languege bolder uppercase" name='html5'>HTML 5</button>
+        <button type="button" id="btn-css" class="__btn-languege bolder uppercase" name="css3">CSS 3</button>
+        <button type="button" id="btn-js" class="__btn-languege bolder uppercase" name="js">JavaScript</button>
+        <button type="button" id="btn-algoritimo" class="__btn-languege bolder uppercase" name="algoritmo">Algorítimo</button>
+        <button type="button" id="btn-php" class="__btn-languege bolder uppercase" name="php">PHP</button>
+        <button type="button" id="btn-csharp" class="__btn-languege bolder uppercase" name="c#">C#</button>
+        <button type="button" class="__btn-back btn-menu hide">Voltar</button>
+        <input type="hidden" class='time-of-game-state' />
+      </section>
+
+      <!-- SCREEN SETTINGS -->
+      <section class="screen-setting center hide">
+        <button type="button" name='html' class="__btn-setting">HTML: 0%</button>
+        <button type="button" name='css' class="__btn-setting">CSS: 0%</button>
+        <button type="button" name='js' class="__btn-setting">JS: 0%</button>
+        <button type="button" name='algoritmo' class="__btn-setting">Algoritmo: 0%</button>
+        <button type="button" name='php' class="__btn-setting">PHP: 0%</button>
+        <button type="button" name='c#' class="__btn-setting">C#: 0%</button>
+        <button type="button" id="btn-reset" class="btn-menu">Repor</button>
+        <button type="button" class="__btn-back btn-menu hide">Voltar</button>
+      </section>
+
+      <!-- SCREEN EXTRAS -->
+      <section class="screen-extras center hide">
+        <p>WebSite: <a href="https://eadfast.com" class='company-link' target="_blank">EadFast</a></p>
+        <div class="game-progress">
+          <img src="app/assets/img/emoji.gif" class='hide img__emoji' width='100' alt="Emoji parabenizando" />
+          <p>Progresso do Jogo: 0%</p>
+          <progress value="0" max="100">50%</progress>
+          <div class="stage"></div>
+        </div>
+      </section>
+
+
+      <!-- QUESTION SCREEN -->
+      <section class="game center hide">
+
+        <header class="__question">
+          <div class="scores">
+            Pontuação: <b>0</b>
+          </div>
+          <div class="quest">
+            <h1>Qual das seguintes empresas não actua no mercado de jogos ?</h1>
+          </div>
+
+        </header>
+
+        <div class="__progress-time-left">
+          <label for="time-left" class="block">Tempo restante: </label>
+          <progress id="time-left" value="100" max="100">0%</progress>
+        </div>
+
+        <div class="__control-group-answer">
+          <button type="button" class="__btn-answer uppercase">L</button>
+          <button type="button" class="__btn-answer uppercase">L</button>
+          <button type="button" class="__btn-answer uppercase">L</button>
+          <button type="button" class="__btn-answer uppercase">L</button>
+
+          <div class="img-challenge-container hide">
+            <img class="__img-challenge" alt="Estrutura básica de HTML" />
+            <img class="__img-challenge" alt="Código javascript" />
+          </div>
+
+        </div>
+
+        <div class="__control-group-actions center">
+          <span class="__asking bolder uppercase block">Respondendo <b>0</b> de 10 perguntas</span>
+          <button type="button" class="__btn-back-to-menu" title="Escolher linguagem">Menu</button>
+          <button type="button" class="__btn-next" title="Próxima questão">Próxima</button>
+        </div>
+      </section>
+
+      <section class="hide screen-end center">
+        <div class="nota-game">
+          <h4>A sua nota é</h4>
+          <h1>0</h1>
+          <span> Fim do jogo</span>
+        </div>
+        <div class="__control-group-actions center"></div>
+        <button type="button" class="__btn-play-again">Jogar</button>
+        <button type="button" class="__btn-back-to-menu">Menu</button>
+      </section>
+
+    </main>
+    <script type="text/javascript" src="app/js/main.min.js"></script>
+  </body>
+</html>
